@@ -1,0 +1,259 @@
+.aboutPage {
+  padding: var(--spacing-xl) 0 var(--spacing-2xl);
+}
+
+/* Hero Section */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.heroTitle {
+  font-size: 42px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.heroAccent {
+  color: var(--color-primary);
+}
+
+.heroDescription {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #6B7280;
+}
+
+.heroImage {
+  position: relative;
+}
+
+.heroImg {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Mission Section */
+.mission {
+  background-color: var(--color-background);
+  padding: var(--spacing-2xl);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-2xl);
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 32px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.missionText {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #6B7280;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Values Section */
+.values {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+}
+
+.valueCard {
+  background-color: var(--color-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px var(--color-shadow);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.valueCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.valueIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 50%;
+  margin-bottom: var(--spacing-md);
+}
+
+.valueTitle {
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-sm);
+}
+
+.valueDescription {
+  color: #6B7280;
+  line-height: 1.6;
+}
+
+/* Story Section */
+.story {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+  margin-top: var(--spacing-xl);
+}
+
+.storyImage {
+  position: relative;
+}
+
+.storyImg {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.storyContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.storyText {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #6B7280;
+}
+
+/* Stats Section */
+.stats {
+  background-color: var(--color-primary);
+  padding: var(--spacing-2xl);
+  border-radius: var(--border-radius);
+  color: var(--color-white);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+.stat {
+  text-align: center;
+}
+
+.statNumber {
+  font-size: 48px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-sm);
+}
+
+.statLabel {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    text-align: center;
+  }
+  
+  .heroTitle {
+    font-size: 32px;
+  }
+  
+  .heroDescription {
+    font-size: 16px;
+  }
+  
+  .heroImg {
+    height: 300px;
+  }
+  
+  .mission {
+    padding: var(--spacing-xl);
+  }
+  
+  .sectionTitle {
+    font-size: 28px;
+  }
+  
+  .missionText {
+    font-size: 16px;
+  }
+  
+  .valuesGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .valueCard {
+    padding: var(--spacing-lg);
+  }
+  
+  .storyGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+  
+  .storyImg {
+    height: 250px;
+  }
+  
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+  
+  .statNumber {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats {
+    padding: var(--spacing-xl);
+  }
+}

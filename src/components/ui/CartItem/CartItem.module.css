@@ -1,0 +1,138 @@
+.cartItem {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-md);
+}
+
+.imageContainer {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.price {
+  font-size: 14px;
+  color: #6B7280;
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: 4px;
+}
+
+.quantityButton {
+  background: none;
+  border: none;
+  color: var(--color-text);
+  padding: var(--spacing-xs);
+  border-radius: 4px;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantityButton:hover {
+  background-color: var(--color-background);
+  color: var(--color-primary);
+}
+
+.quantityValue {
+  font-weight: var(--font-weight-medium);
+  min-width: 24px;
+  text-align: center;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  color: #EF4444;
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.removeButton:hover {
+  background-color: #FEF2F2;
+}
+
+.subtotal {
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .cartItem {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .imageContainer {
+    width: 60px;
+    height: 60px;
+    align-self: flex-start;
+  }
+  
+  .info {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .controls {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+  }
+  
+  .subtotal {
+    text-align: left;
+  }
+}
