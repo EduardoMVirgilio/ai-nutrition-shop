@@ -58,85 +58,35 @@ Se deben poder persistir los productos del carrito, usando Context API y localSt
 **Resultado del Prompt:**
 
 ```
-1. Visión General y Stack Tecnológico
-Proyecto: "NutritiON", un e-commerce de suplementos nutricionales.
-Directiva: Crear una aplicación web completa, con un diseño moderno, profesional y totalmente responsive. La arquitectura debe ser modular y escalable.
-Stack Tecnológico Mandatorio:
-Core: React 18, Vite, TypeScript.
-Routing: React Router v6.
-Estilos: Tailwind CSS (utility-first) y CSS Modules para componentes específicos.
-Estado: React Context API con el hook useReducer.
-Formularios: Formik para gestión y Yup para validación.
-APIs Externas: EmailJS para el envío de formularios.
-2. Arquitectura y Estructura de Archivos
-Adherirse estrictamente a la siguiente estructura feature-driven:
-Generated code
-/src
-├── assets/
-├── components/         # UI global (Button, Input, Modal, Spinner)
-├── context/            # CartContext, ProductsContext, UIContext
-├── data/
-│   └── products.json   # Base de datos de productos
-├── features/           # Lógica de negocio (products, checkout)
-├── hooks/              # Hooks personalizados (useLocalStorage, etc.)
-├── layouts/
-│   └── MainLayout.tsx    # Layout con Header, Footer y <Outlet/>
-├── pages/              # Componentes de página
-├── routes/
-│   └── AppRoutes.tsx     # Definición de rutas
-├── services/
-│   └── emailService.ts   # Integración con EmailJS
-├── styles/
-│   └── global.css
-├── types/
-└── utils/
-Use code with caution.
-3. Datos y Manejo de Estado
-products.json: Crear este archivo en /src/data. Debe contener al menos 3 categorías ('proteinas', 'vitaminas', 'pre-entrenos'), con un mínimo de 6 productos por categoría.
-Schema del Producto: { id, name, description, summary, price, category, image, stock }.
-Context API:
-ProductsContext: Gestiona el fetch y almacenamiento de los productos desde products.json. Estado: { products, isLoading, error }.
-CartContext: Gestiona todas las acciones del carrito (ADD_ITEM, REMOVE_ITEM, UPDATE_QUANTITY, CLEAR_CART). El estado del carrito debe persistir en localStorage utilizando un hook useLocalStorage integrado con el reducer.
-UIContext: Controla el estado global de la UI, como la apertura del menú móvil y la gestión de un modal de confirmación genérico. Estado: { isMobileMenuOpen, modal: { isOpen, config } }.
+1. Visión y Stack Tecnológico
+Proyecto: "NutritiON", un e-commerce de suplementos.
+Directiva: Construir una aplicación web completa, con un diseño moderno, profesional y totalmente responsive, usando JavaScript.
+Stack: React 18, Vite, JavaScript (JSX), React Router v6, Context API, Formik/Yup, EmailJS y Tailwind CSS.
+2. Estructura y Datos
+Estructura: Organizar el proyecto en carpetas claras: /src con subcarpetas para components (UI global), context, data, hooks, pages, routes y services.
+Datos: Crear un archivo /src/data/products.json. Debe contener al menos 3 categorías ('proteinas', 'vitaminas', 'pre-entrenos'), con 6 productos por categoría.
+Schema de Producto: { id, name, description, summary, price, category, image, stock }.
+3. Manejo de Estado (Context API)
+ProductsContext: Gestiona el fetch y almacenamiento de los productos desde products.json.
+CartContext: Gestiona las acciones del carrito (ADD_ITEM, REMOVE_ITEM, UPDATE_QUANTITY, CLEAR_CART). El estado del carrito debe persistir en localStorage.
+UIContext: Controla un modal de confirmación genérico y el estado del menú móvil.
 4. Rutas y Navegación
-Configurar todas las rutas en AppRoutes.tsx usando React.lazy() para code-splitting. Todas las páginas deben renderizarse dentro de un MainLayout.
+Configurar en AppRoutes.js usando lazy loading y un MainLayout que contenga el Header y Footer.
 /: HomePage
 /about: AboutUsPage
 /products: ProductsPage
 /product/:productId: ProductDetailPage
 /cart: CartPage
 /contact: ContactPage
-/checkout: CheckoutPage (Ruta protegida: redirigir a /products si el carrito está vacío).
-5. Especificaciones de Páginas y Funcionalidades Clave
-Componente Modal Genérico: Controlado por UIContext, debe ser usado para todas las acciones que requieran confirmación del usuario.
-HomePage (Landing):
-Header responsive con menú hamburguesa (controlado por UIContext) y navegación.
-Sección Hero con un CTA a la página de productos.
-Sección de productos destacados que renderice ProductCards y un enlace a /products.
-Footer con información básica.
-ProductsPage:
-Implementar filtros funcionales por categoría.
-Renderizar la lista de productos filtrados usando un componente ProductCard.
-El botón "Agregar al Carrito" en cada ProductCard debe invocar un modal de confirmación.
-ProductDetailPage:
-Obtener el ID del producto de la URL y mostrar sus detalles completos.
-Incluir un selector de cantidad y un botón para añadir al carrito.
-CartPage:
-Listar los productos del carrito, permitiendo ajustar cantidad y eliminar ítems.
-Las acciones "Eliminar" y "Vaciar Carrito" deben usar el modal de confirmación.
-Mostrar el total y un botón "Finalizar Compra" que navegue a /checkout.
-ContactPage:
-Formulario con los campos nombre, apellido, email y asunto.
-Usar Formik y Yup para la validación: todos los campos son requeridos, email válido, y asunto con longitud mínima.
-En un envío válido, usar emailService.ts para enviar un email real a través de EmailJS. Gestionar los estados de carga y mostrar feedback (éxito/error) al usuario.
-CheckoutPage:
-Mostrar un resumen del pedido.
-Formulario de información de envío (con Formik y Yup).
-Al "pagar", la lógica debe: limpiar el carrito, limpiar localStorage y redirigir al usuario a la HomePage con un mensaje de compra exitosa.
-6. Requisitos de Calidad
-Diseño Responsive: La aplicación debe ser 100% funcional y estéticamente pulcra en todas las resoluciones, desde móviles (320px) hasta escritorio.
-Código: Escribir código limpio, bien documentado (JSDoc para componentes y hooks) y fuertemente tipado con TypeScript.
-Accesibilidad (a11y): Usar HTML semántico y atributos ARIA donde sea necesario.
+/checkout: CheckoutPage (Si el carrito está vacío, redirigir a /products).
+5. Lógica de Páginas y Funcionalidades
+Un modal de confirmación (controlado por UIContext) debe usarse para todas las acciones destructivas (eliminar ítem, vaciar carrito) y para confirmar adiciones al carrito.
+HomePage: Debe tener un header responsive, sección hero, una sección de productos destacados (ProductCard) y un footer.
+ProductsPage: Incluir filtros funcionales por categoría y renderizar la lista de productos.
+ProductDetailPage: Mostrar toda la información detallada de un producto con un selector de cantidad.
+CartPage: Listar los ítems del carrito, permitiendo modificar su cantidad o eliminarlos (con modal). Mostrar el total y un botón para ir al checkout.
+CheckoutPage: Mostrar resumen del pedido y un formulario de envío (validado con Formik/Yup). Al "pagar", la lógica debe limpiar el carrito y redirigir al inicio con un mensaje de éxito.
+ContactPage: Crear un formulario (nombre, apellido, email, asunto) validado con Formik/Yup. En un envío válido, usar el servicio de EmailJS para enviar un correo real y mostrar feedback (éxito/error) al usuario.
 ```
 
 ## 🚀 Características Principales
